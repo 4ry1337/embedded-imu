@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc quaternion.c MadgwickAHRS.c -o client
+gcc quaternion.c MadgwickAHRS.c -o quaternion -lm -g
