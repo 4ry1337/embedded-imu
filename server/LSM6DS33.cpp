@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 using namespace std;
@@ -67,9 +68,22 @@ void LSM6DS33::calculate_orientation() {
 int LSM6DS33::read_sensor_state() {
   this->registers = this->read_registers(LSM6DS33_BUFFER_SIZE, 0x00);
 
-  if (*(this->registers) != 0x69) {
-    perror("LSM6DS33: Failure Condition - Sensor ID not Verified");
+  if (this->registers == NULL) {
+    cerr << "Failed to read registers: " << strerror(errno) << endl;
     return -1;
+  }
+
+  // Print out the first few register values for debugging
+  cout << "First few register values: ";
+  for (int i = 0; i < 10; i++) {
+    printf("0x%02X ", this->registers[i]);
+  }
+  cout << endl;
+
+  if (*(this->registers) != 0x69) {
+    cerr << "LSM6DS33: Failure Condition - Sensor ID not Verified" << hex
+         << (int)*(this->registers) << dec << endl;
+    return 1;
   }
 
   // Read accelerometer data
