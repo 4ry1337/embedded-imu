@@ -5,8 +5,6 @@
 #include <string.h>
 #include <unistd.h>
 
-using namespace std;
-
 namespace exploringBB {
 
 // LSM6DS33 Register Addresses
@@ -68,9 +66,9 @@ void LSM6DS33::calculate_orientation() {
 int LSM6DS33::read_sensor_state() {
   this->registers = this->read_registers(LSM6DS33_BUFFER_SIZE, 0x00);
 
-  if (*this->registers != 0x69) {
-    cerr << "LSM6DS33: Failure Condition - Sensor ID not Verified - " << hex
-         << *this->registers << dec << endl;
+  if (*(this->registers + (int)0x0f) != 0x69) {
+    std::cerr << "LSM6DS33: Failure Condition - Sensor ID not Verified"
+              << std::endl;
     return 1;
   }
 
@@ -96,12 +94,13 @@ int LSM6DS33::read_sensor_state() {
 
 void LSM6DS33::debug(int iterations) {
   for (int count = 0; count < iterations; count++) {
-    cout << "Accel(X,Y,Z): " << this->get_acceleration_x() << ", "
-         << this->get_acceleration_y() << ", " << this->get_acceleration_z()
-         << " | Gyro(X,Y,Z): " << this->get_rotation_x() << ", "
-         << this->get_rotation_y() << ", " << this->get_rotation_z()
-         << " | Pitch:" << this->get_pitch() << " Roll:" << this->get_roll()
-         << "     \r" << flush;
+    std::cout << "Accel(X,Y,Z): " << this->get_acceleration_x() << ", "
+              << this->get_acceleration_y() << ", "
+              << this->get_acceleration_z()
+              << " | Gyro(X,Y,Z): " << this->get_rotation_x() << ", "
+              << this->get_rotation_y() << ", " << this->get_rotation_z()
+              << " | Pitch:" << this->get_pitch()
+              << " Roll:" << this->get_roll() << "     \r" << std::flush;
     usleep(100000);
     this->read_sensor_state();
   }
