@@ -30,19 +30,19 @@ int main() {
   exploringBB::LSM6DS33 imu_sensor(2, 0x6B);
   imu_sensor.display();
 
-  for (int i = 0; i < 100; ++i) {
-    imu_sensor.read_sensor_state();
+  /*   for (int i = 0; i < 100; ++i) { */
+  imu_sensor.read_sensor_state();
 
-    std::cout << "IMU Data - Accel(X,Y,Z): " << imu_sensor.get_acceleration_x()
-              << ", " << imu_sensor.get_acceleration_y() << ", "
-              << imu_sensor.get_acceleration_z()
-              << " | Gyro(X,Y,Z): " << imu_sensor.get_rotation_x() << ", "
-              << imu_sensor.get_rotation_y() << ", "
-              << imu_sensor.get_rotation_z()
-              << " | Pitch: " << imu_sensor.get_pitch()
-              << " Roll: " << imu_sensor.get_roll() << std::endl;
-    usleep(100000); // 100ms delay
-  }
+  std::cout << "IMU Data - Accel(X,Y,Z): " << imu_sensor.get_acceleration_x()
+            << ", " << imu_sensor.get_acceleration_y() << ", "
+            << imu_sensor.get_acceleration_z()
+            << " | Gyro(X,Y,Z): " << imu_sensor.get_rotation_x() << ", "
+            << imu_sensor.get_rotation_y() << ", "
+            << imu_sensor.get_rotation_z()
+            << " | Pitch: " << imu_sensor.get_pitch()
+            << " Roll: " << imu_sensor.get_roll() << std::endl;
+  /* usleep(100000); // 100ms delay
+} */
 
   return 0;
 }

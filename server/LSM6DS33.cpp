@@ -69,8 +69,8 @@ int LSM6DS33::read_sensor_state() {
   this->registers = this->read_registers(LSM6DS33_BUFFER_SIZE, 0x00);
 
   if (*this->registers != 0x69) {
-    cerr << "LSM6DS33: Failure Condition - Sensor ID not Verified" << hex
-         << (int)*(this->registers) << dec << endl;
+    cerr << "LSM6DS33: Failure Condition - Sensor ID not Verified - " << hex
+         << *this->registers << dec << endl;
     return 1;
   }
 
