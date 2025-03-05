@@ -3,6 +3,7 @@
 
 #include "LIS3MDL.h"
 #include "LSM6DS33.h"
+#include <string>
 
 namespace BB {
 
@@ -34,6 +35,7 @@ public:
   virtual void debug();
   virtual void display();
   virtual ~AltIMU();
+  virtual std::string getQuaternionString();
 };
 } // namespace BB
 

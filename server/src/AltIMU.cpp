@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include <ostream>
+#include <sstream>
 
 using namespace BB;
 
@@ -22,6 +23,7 @@ int AltIMU::read_sensors_state() {
   if (this->mag_senseor.read_sensor_state() < 0) {
     std::cerr << "LIS3MDL: Failed to read sensor state" << std::endl;
   }
+  this->calculate_quaternions();
   return 0;
 }
 
@@ -265,16 +267,22 @@ void AltIMU::debug() {
 }
 
 void AltIMU::display() {
-  std::cout << "Accel(X,Y,Z): " << this->imu_sensor.get_ax() << ", "
-            << this->imu_sensor.get_ay() << ", " << this->imu_sensor.get_az()
+  std::cout << "Accelerometer\t" << this->imu_sensor.get_ax() << "\t"
+            << this->imu_sensor.get_ay() << "\t" << this->imu_sensor.get_az()
             << "\n"
-            << "Gyro(X,Y,Z): " << this->imu_sensor.get_gx() << ", "
-            << this->imu_sensor.get_gy() << ", " << this->imu_sensor.get_gz()
+            << "Gyro\t" << this->imu_sensor.get_gx() << "\t"
+            << this->imu_sensor.get_gy() << "\t" << this->imu_sensor.get_gz()
             << "\n"
-            << "Magnet(X,Y,Z): " << this->mag_senseor.get_mx() << ", "
-            << this->mag_senseor.get_my() << ", " << this->mag_senseor.get_mz()
+            << "Magnet\t" << this->mag_senseor.get_mx() << "\t"
+            << this->mag_senseor.get_my() << "\t" << this->mag_senseor.get_mz()
             << "\n\n"
             << std::flush;
+}
+
+std::string AltIMU::getQuaternionString() {
+  std::ostringstream oss;
+  oss << this->q0 << "," << this->q1 << "," << this->q2 << "," << this->q2;
+  return oss.str();
 }
 
 AltIMU::~AltIMU() {}
