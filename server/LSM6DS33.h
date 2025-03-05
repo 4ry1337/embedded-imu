@@ -36,6 +36,7 @@ public:
   virtual float get_yaw() { return yaw; }
 
   virtual void debug(int iterations = 600);
+  virtual void display();
   virtual ~LSM6DS33();
 };
 } /* namespace exploringBB */

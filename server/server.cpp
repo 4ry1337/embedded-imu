@@ -29,19 +29,21 @@ int main() {
   std::cout << "AltIMU Sensor Demonstration" << std::endl;
 
   try {
-    exploringBB::LSM6DS33 imuSensor(2);
+    exploringBB::LSM6DS33 imu_sensor(2, 0x6B);
+    imu_sensor.display();
 
     for (int i = 0; i < 100; ++i) {
-      imuSensor.read_sensor_state();
+      imu_sensor.read_sensor_state();
 
-      std::cout << "IMU Data - Accel(X,Y,Z): " << imuSensor.get_acceleration_x()
-                << ", " << imuSensor.get_acceleration_y() << ", "
-                << imuSensor.get_acceleration_z()
-                << " | Gyro(X,Y,Z): " << imuSensor.get_rotation_x() << ", "
-                << imuSensor.get_rotation_y() << ", "
-                << imuSensor.get_rotation_z()
-                << " | Pitch: " << imuSensor.get_pitch()
-                << " Roll: " << imuSensor.get_roll() << std::endl;
+      std::cout << "IMU Data - Accel(X,Y,Z): "
+                << imu_sensor.get_acceleration_x() << ", "
+                << imu_sensor.get_acceleration_y() << ", "
+                << imu_sensor.get_acceleration_z()
+                << " | Gyro(X,Y,Z): " << imu_sensor.get_rotation_x() << ", "
+                << imu_sensor.get_rotation_y() << ", "
+                << imu_sensor.get_rotation_z()
+                << " | Pitch: " << imu_sensor.get_pitch()
+                << " Roll: " << imu_sensor.get_roll() << std::endl;
 
       usleep(100000); // 100ms delay
     }

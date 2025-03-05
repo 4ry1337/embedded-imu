@@ -121,6 +121,8 @@ void LSM6DS33::debug(int iterations) {
   }
 }
 
+void LSM6DS33::display() { this->debug_registers(); }
+
 LSM6DS33::~LSM6DS33() {}
 
 } /* namespace exploringBB */
