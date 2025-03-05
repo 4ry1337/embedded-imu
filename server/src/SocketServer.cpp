@@ -29,7 +29,7 @@
 #include <unistd.h>
 using namespace std;
 
-namespace exploringBB {
+namespace BB {
 
 SocketServer::SocketServer(int portNumber) {
   this->socketfd = -1;
@@ -89,4 +89,4 @@ SocketServer::~SocketServer() {
   close(this->clientSocketfd);
 }
 
-} /* namespace exploringBB */
+} // namespace BB
