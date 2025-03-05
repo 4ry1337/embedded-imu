@@ -20,7 +20,7 @@ private:
   void calculate_orientation();
 
 public:
-  LSM6DS33(unsigned int I2CBus, unsigned int I2CAddress = 0x6A);
+  LSM6DS33(unsigned int I2CBus, unsigned int I2CAddress = 0x6B);
   virtual int read_sensor_state();
 
   virtual short get_acceleration_x() { return acceleration_x; }
