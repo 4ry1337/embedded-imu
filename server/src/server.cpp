@@ -16,7 +16,10 @@ int main(int argc, char *argv[]) {
   std::cout << "Server started. Waiting for connection..." << std::endl;
   BB::AltIMU imu(2);
   while (true) {
-    imu.read_sensors_state();
+    int res = imu.read_sensors_state();
+    if (res < 0) {
+      continue;
+    }
     std::string quaternionData = imu.getQuaternionString();
     if (server.send(quaternionData) != 0) {
       std::cerr << "Error sending data to client." << std::endl;
