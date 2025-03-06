@@ -7,9 +7,9 @@
 
 namespace BB {
 
-#define LA_SCALE 0.061 * 9.81 * 1000;
-#define G_SCALE 8.75 / 1000;
-#define M_SCALE 1 / 6842;
+#define LA_SCALE 0.061 * 9.81 * 1000.0;
+#define G_SCALE 8.75 / 1000.0;
+#define M_SCALE 1.0 / 6842.0;
 
 #define sampleFreq 512.0f // sample frequency in Hz
 #define betaDef 0.1f      // 2 * proportional gain
