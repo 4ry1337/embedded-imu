@@ -20,7 +20,6 @@ int main(int argc, char *argv[]) {
     std::string quaternionData = imu.getQuaternionString();
     if (server.send(quaternionData) != 0) {
       std::cerr << "Error sending data to client." << std::endl;
-      break;
     }
     std::cout << "Data: " << quaternionData << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
