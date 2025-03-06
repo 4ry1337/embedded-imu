@@ -1,12 +1,25 @@
 #include "AltIMU.h"
 #include "SocketServer.h"
+#include <atomic>
 #include <chrono>
+#include <csignal>
 #include <iostream>
 #include <string>
 #include <thread>
 #include <unistd.h>
 
+std::atomic<bool> gTerminate(false);
+
+void signalHandler(int signum) {
+  gTerminate = true;
+  std::cout << "\nSignal (" << signum << ") received. Terminating server..."
+            << std::endl;
+}
+
 int main(int argc, char *argv[]) {
+  std::signal(SIGINT, signalHandler);
+  std::signal(SIGTERM, signalHandler);
+
   std::cout << "Starting Beagle Board Server" << std::endl;
   BB::AltIMU imu(2);
   while (true) {
