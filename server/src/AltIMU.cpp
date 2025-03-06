@@ -19,9 +19,11 @@ AltIMU::AltIMU(unsigned int I2CBus, unsigned int imu_address,
 int AltIMU::read_sensors_state() {
   if (this->imu_sensor.read_sensor_state() < 0) {
     std::cerr << "LSM6DS33: Failed to read sensor state" << std::endl;
+    return -1;
   }
   if (this->mag_senseor.read_sensor_state() < 0) {
     std::cerr << "LIS3MDL: Failed to read sensor state" << std::endl;
+    return -1;
   }
   this->calculate_quaternions();
   return 0;
