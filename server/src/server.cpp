@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
       std::cerr << "Error sending data to client." << std::endl;
       break;
     }
+    std::cout << "Data: " << quaternionData << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
   std::cout << "End of Beagle Board Server" << std::endl;
