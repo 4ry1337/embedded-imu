@@ -2,7 +2,6 @@
 #define LSM6DS33_H_
 
 #include "I2CDevice.h"
-#define LSM6DS33_BUFFER_SIZE 0x70
 
 namespace BB {
 

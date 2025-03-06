@@ -7,6 +7,8 @@
 
 namespace BB {
 
+#define LSM6DS33_ADDR 0x6B
+#define LSM6DS33_BUFFER_SIZE 0x70
 #define WHO_AM_I 0x0F
 #define CTRL1_XL 0x10
 #define CTRL2_G 0x11
