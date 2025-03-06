@@ -32,15 +32,15 @@ int AltIMU::read_sensors_state() {
 void AltIMU::calculate_quaternions() {
   float gx = this->imu_sensor.get_gx() * G_SCALE;
   float gy = this->imu_sensor.get_gy() * G_SCALE;
-  float gz = this->imu_sensor.get_gy() * G_SCALE;
+  float gz = this->imu_sensor.get_gz() * G_SCALE;
 
   float ax = this->imu_sensor.get_ax() * LA_SCALE;
   float ay = this->imu_sensor.get_ay() * LA_SCALE;
   float az = this->imu_sensor.get_az() * LA_SCALE;
 
   float mx = this->mag_senseor.get_mx() * M_SCALE;
-  float my = this->mag_senseor.get_mx() * M_SCALE;
-  float mz = this->mag_senseor.get_mx() * M_SCALE;
+  float my = this->mag_senseor.get_my() * M_SCALE;
+  float mz = this->mag_senseor.get_mz() * M_SCALE;
   MadgwickAHRSupdate(gx, gy, gz, ax, ay, az, mx, my, mz);
 }
 
