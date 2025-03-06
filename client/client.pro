@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-CONFIG   += thread
+CONFIG   += thread console
 QT       += core gui widgets openglwidgets network
 
 TARGET = client
