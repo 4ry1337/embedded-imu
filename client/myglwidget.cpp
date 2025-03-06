@@ -95,21 +95,21 @@ void MyGLWidget::paintGL() {
   glVertex3f(1.0, 0.5, -1.0);
   glVertex3f(-1.0, 0.5, -1.0);
 
-  // bottom
+  // bottom yellow
   glColor3f(1.0, 1.0, 0.0);
   glVertex3f(1.0, -0.5, 1.0);
   glVertex3f(1.0, -0.5, -1.0);
   glVertex3f(-1.0, -0.5, -1.0);
   glVertex3f(-1.0, -0.5, 1.0);
 
-  // right
+  // right magenta
   glColor3f(1.0, 0.0, 1.0);
   glVertex3f(1.0, 0.5, 1.0);
   glVertex3f(1.0, -0.5, 1.0);
   glVertex3f(1.0, -0.5, -1.0);
   glVertex3f(1.0, 0.5, -1.0);
 
-  // left
+  // left cyan
   glColor3f(0.0, 1.0, 1.0);
   glVertex3f(-1.0, 0.5, 1.0);
   glVertex3f(-1.0, -0.5, 1.0);
